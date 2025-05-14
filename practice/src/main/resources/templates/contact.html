@@ -6,48 +6,55 @@
 </head>
 <body>
 	<h1>お問い合わせ</h1>
-	<form action="contact" method="post">
+	<form th:action="@{/contact}" th:object="${contactForm}" method="post">
 		<table border="1">
 	    	<tr>
     			<td>姓</td>
     			<td>
-    				<input type="text" name="lastName" >
+    				<input type="text" th:field="*{lastName}">
+					<span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" style="color: red"></span>
     			</td>
     		</tr>
     		<tr>
     			<td>名</td>
 	    		<td>
-		    		<input type="text" name="firstName" >
+		    		<input type="text" th:field="*{firstName}">
+					<span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" style="color: red"></span>
 			    </td>
     		</tr>
     		<tr>
     			<td>メールアドレス</td>
 	    		<td>
-		    		<input type="email" name="email" >
+		    		<input type="email" th:field="*{email}">
+					<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color: red"></span>
 			    </td>
     		</tr>
      		<tr>
     			<td>電話番号</td>
 	    		<td>
-		    		<input type="tel" name="phone" >
+		    		<input type="tel" th:field="*{phone}">
+					<span th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" style="color: red"></span>
 			    </td>
     		</tr>
     		<tr>
     			<td>郵便番号</td>
 	    		<td>
-		    		<input type="text" name="zipCode" >
+		    		<input type="text" th:field="*{zipCode}">
+					<span th:if="${#fields.hasErrors('zipCode')}" th:errors="*{zipCode}" style="color: red"></span>
     			</td>
         		</tr>
         		<tr>
      	    		<td>住所</td>
     		    	<td>
-    	    			<input type="text" name="address" >
+    	    			<input type="text" th:field="*{address}">
+						<span th:if="${#fields.hasErrors('address')}" th:errors="*{address}" style="color: red"></span>
         			</td>
         		</tr>
     	    	<tr>
 	    	    	<td>建物名</td>
        	    		<td>
-		        		<input type="text" name="buildingName" >
+		        		<input type="text" th:field="*{buildingName}">
+						<span th:if="${#fields.hasErrors('buildingName')}" th:errors="*{buildingName}" style="color: red"></span>
 	    		    </td>
 	    	    </tr>
 	    	<tr>
@@ -58,12 +65,14 @@
 				        <option value="technicalQuestions">技術的なお問い合わせ</option>
 				        <option value="others">その他</option>
 				    </select>
+					<span th:if="${#fields.hasErrors('contactType')}" th:errors="*{contactType}" style="color: red"></span>
 			    </td>
 		    </tr>
 			<tr>
 				<td>お問い合わせ内容</td>
 				<td>
-					<textarea name="body" row="4" cols="80"></textarea>
+					<textarea th:field="*{body}" row="4" cols="80"></textarea>
+					<span th:if="${#fields.hasErrors('body')}" th:errors="*{body}" style="color: red"></span>
 				</td>
 			</tr>
 		</table>
