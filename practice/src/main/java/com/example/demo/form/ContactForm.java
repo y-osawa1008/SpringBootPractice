@@ -11,33 +11,33 @@ import lombok.Data;
 
 @Data
 public class ContactForm implements Serializable {
-	@NotBlank
+	@NotBlank(message = "姓を入力してください")
 	private String lastName;
 	
-	@NotBlank
+	@NotBlank(message = "名を入力してください")
 	private String firstName;
 	
-	@NotBlank
-	@Email
+	@NotBlank(message = "メールアドレスを入力してください")
+	@Email(message = "有効なメールアドレス形式で入力してください")
 	private String email;
 	
-	@NotBlank
+	@NotBlank(message = "電話番号を入力してください")
 	@Size(min = 10, max = 11)
 	private String phone;
 	
-	@NotBlank
+	@NotBlank(message = "郵便番号を入力してください")
 	@Pattern(regexp = "[0-9]{3}[-]{0,1}[0-9]{4}")
 	private String zipCode;
 	
-	@NotBlank
+	@NotBlank(message = "住所を入力してください")
 	private String address;
 	
-	@NotBlank
+	@NotBlank(message = "建物名を入力してください")
 	private String buildingName;
 	
 	@NotBlank
 	private String contactType;
 	
-	@NotBlank
+	@NotBlank(message = "内容を入力してください")
 	private String body;
 }
