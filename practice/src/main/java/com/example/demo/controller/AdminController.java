@@ -96,7 +96,11 @@ public class AdminController {
  // 更新処理
     @PostMapping("/contacts/edit/{id}")
     public String updateContact(@PathVariable Long id,
-                                @ModelAttribute("contact") Contact form) {
+                                @ModelAttribute("contact") @Valid Contact form,
+                                BindingResult bindingResult) {
+    	if (bindingResult.hasErrors()) {
+    		return "admin/contactEdit";
+    	}
 
         Contact contact = contactService.findById(id);
         contact.setLastName(form.getLastName());
